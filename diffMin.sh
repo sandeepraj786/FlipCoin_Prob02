@@ -1,0 +1,54 @@
+#!/bin/bash -x
+echo "Welcome To Flip Coin Simulation "
+
+
+while [[ $isHeadWon -lt 21 && $isTailWon -lt 21 ]]
+do
+	randomCheck=$(( RANDOM%2 ))
+
+if [[ isHead -eq randomCheck ]]
+then
+	echo "Tail"
+	isHeadWon=$(( $isHeadWon + 1 ))
+else
+	echo "Head"
+	isTailWon=$(( $isTailWon + 1 ))
+fi
+done
+
+echo "Total Number Of Head Win is: $isHeadWon"
+echo "Total Number Of Tail Win is: $isTailWon"
+
+if [[ isHeadWon -lt isTailWon ]]
+then
+	echo "Tail Win"
+elif [[ isHeadWon -eq isTailWon ]]
+then
+	echo "Tie"
+else
+	echo "Head Win"
+fi
+
+#Usecase4- Extend UC 3 to ensure if its tie then the game
+	   #continues till the difference of minimum
+echo Usecase4
+if [[ isHeadWon -eq isTailWon ]]
+then
+while [[ $WinDifference -ge 2 ]]
+do
+	randomCheck2=$(( RANDOM%2 ))
+
+if [[ IsHead -eq randomCheck2 ]]
+then
+	echo "Head"
+	IsHeadWon=$(( $IsHeadWon + 1 ))
+	WinDifference=$(( $IsHeadWon - $IsTailWon ))
+else
+	echo "Tail"
+	IsTailWon=$(( $IsTailWon + 1 ))
+	WinDifference=$(( $IsTailWon - $IsHeadWon ))
+fi
+done
+else
+	echo "Tie"
+fi
